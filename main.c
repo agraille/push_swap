@@ -6,9 +6,11 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/04 13:24:03 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:44:33 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 static int	ft_atoi(const char *nptr)
 {
@@ -17,8 +19,6 @@ static int	ft_atoi(const char *nptr)
 
 	sign = 1;
 	result = 0;
-	while (*nptr == 32 || (*nptr >= 9 && *nptr <= 13))
-		nptr++;
 	if (*nptr == '+' || *nptr == '-')
 	{
 		if (*nptr == '-')
@@ -41,12 +41,41 @@ static int	ft_atoi(const char *nptr)
 
 int	main(int argc, char const **argv)
 {
+	t_stack	*pile_a;
+	t_stack	*pile_b;
+
 	if (argc == 1)
 		return (0);
-	//check si valide
-	//atoi pour convert en entier et envoyer dans data 
+	pile_a = ft_init_stack(argc - 1);
+	pile_b = ft_init_stack(argc - 1);
+	while (argc != 1)
+	{
+		pile_a->data[++pile_a->top] = ft_atoi(argv[argc - 1]);
+		pile_b->data[++pile_b->top] = ft_atoi(argv[argc - 1]);
+		argc --;
+	}
+	//check si valide et les doubles
 	//check si deja trié
-	//envoyer le nombre darg pour la size de capacity
+	int i = pile_a->top;
+	// while (i >= 0)
+	// {
+	// 	printf("%d\n",pile_a->data[i]);
+	// 	i--;
+	// }
+	// printf("_\n");
+	// printf("a\n");
+	ss(pile_a, pile_b);
+	i = pile_a->top;
+	while (i >= 0)
+	{
+		printf("PILE A = %d\n",pile_a->data[i]);
+		printf("PILE B = %d\n",pile_b->data[i]);
+		i--;
+	}
+	free(pile_a->data);
+	free(pile_a);
+	free(pile_b->data);
+	free(pile_b);
 	return (0);
 }
 
