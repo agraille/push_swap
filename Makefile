@@ -6,14 +6,15 @@
 #    By: agraille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 15:02:53 by agraille          #+#    #+#              #
-#    Updated: 2024/12/03 15:06:54 by agraille         ###   ########.fr        #
+#    Updated: 2024/12/04 10:49:35 by agraille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=cc
 CFLAGS=-Wall -Wextra -Werror
 HEADER = push_swap.h
-SRC =./
+SRC =./main.c\
+	./push_swap.c
 
 OBJ = $(SRC:.c=.o)
 NAME = push_swap
@@ -21,9 +22,9 @@ NAME = push_swap
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
-	ar rcs $(NAME) $(OBJ)
+	$(NAME) $(OBJ)
 
-%.o: %.c ft_printf.h
+%.o: %.c push_swap.h
 	$(CC) $(CFLAGS) -I . -c $< -o $@
 
 clean :
