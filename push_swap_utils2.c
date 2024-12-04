@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_utils2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 15:05:59 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/04 19:06:01 by agraille         ###   ########.fr       */
+/*   Created: 2024/12/04 18:42:09 by agraille          #+#    #+#             */
+/*   Updated: 2024/12/04 19:11:49 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-
-typedef struct s_stack
+void	ra_rb(t_stack *cur, char c)
 {
-	int	*data;
-	int	top;
-	int	capacity;
-}	t_stack;
-
-t_stack		*ft_init_stack(int capacity);
-void		sa_sb(t_stack *cur, char a);
-void		ss(t_stack *a, t_stack *b);
-void		pa(t_stack *a, t_stack *b);
-void		pb(t_stack *a, t_stack *b);
-void		ra_rb(t_stack *cur, char c);
-#endif
+	int	tmp;
+	int	i;
+	
+	if (cur->top < 1)
+		return ; 
+	i = cur->top;
+	tmp = cur->data[cur->top];
+	while (i >= 0)
+	{
+		cur->data[i] = cur->data[i - 1];
+		i--;
+	}
+	cur->data[i + 1] = tmp;
+	if (c == 'a')
+		write(1, "ra\n", 3);
+	else
+		write(1, "rb\n", 3);
+}
