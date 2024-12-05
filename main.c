@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/04 19:08:08 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/05 08:34:47 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,32 +51,31 @@ int	main(int argc, char const **argv)
 	while (argc != 1)
 	{
 		pile_a->data[++pile_a->top] = ft_atoi(argv[argc - 1]);
+		pile_b->data[++pile_b->top] = ft_atoi(argv[argc - 1]);
 		argc --;
 	}
-	//check si valide et les doubles
-	//check si deja trié
-	ra_rb(pile_a, 'a');
+	rrr(pile_a, pile_b);
+	rr(pile_a, pile_b);
 	int i = pile_a->top;
-	// int j = pile_b->top;
-	while (i >= 0)
+	int j = pile_b->top;
+	while (j >= 0)
 	{
-		printf("%d\n",pile_a->data[i]);
-		// if (j >= 0)
-		// printf("%d\n",pile_b->data[j]);
-		// else
-		// 	printf("\n");
+		printf("%d   ",pile_a->data[i]);
+		if (j >= 0)
+		printf("%d\n",pile_b->data[j]);
+		else
+			printf("\n");
 		i--;
-		// j--;
+		j--;
 	}
 	printf("\n_   _\n");
 	printf("A   B\n");
-	pile_a->data[pile_a->top] = 0;
-	pile_a->top--;
-	pile_b->data[pile_b->top] = 9;
 	free(pile_a->data);
 	free(pile_a);
 	free(pile_b->data);
 	free(pile_b);
 	return (0);
 }
+	//check si valide et les doubles
+	//check si deja trié
 

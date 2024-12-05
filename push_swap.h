@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:05:59 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/04 19:06:01 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/05 08:29:31 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,7 @@ void		ss(t_stack *a, t_stack *b);
 void		pa(t_stack *a, t_stack *b);
 void		pb(t_stack *a, t_stack *b);
 void		ra_rb(t_stack *cur, char c);
+void		rr(t_stack *a, t_stack *b);
+void		rra_rrb(t_stack *cur, char c);
+void		rrr(t_stack *a, t_stack *b);
 #endif
