@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/05 08:34:47 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/05 10:31:47 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,23 @@ int	main(int argc, char const **argv)
 	t_stack	*pile_b;
 
 	if (argc == 1)
-		return (0);
+		return (-1);
 	pile_a = ft_init_stack(argc - 1);
+	if (!pile_a)
+		return (-1);
 	pile_b = ft_init_stack(argc - 1);
+	if (!pile_b)
+		return (free(pile_a), 0);
 	while (argc != 1)
 	{
 		pile_a->data[++pile_a->top] = ft_atoi(argv[argc - 1]);
-		pile_b->data[++pile_b->top] = ft_atoi(argv[argc - 1]);
 		argc --;
 	}
 	rrr(pile_a, pile_b);
 	rr(pile_a, pile_b);
 	int i = pile_a->top;
 	int j = pile_b->top;
-	while (j >= 0)
+	while (i >= 0 || j >= 0)
 	{
 		printf("%d   ",pile_a->data[i]);
 		if (j >= 0)
