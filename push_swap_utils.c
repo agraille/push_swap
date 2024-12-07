@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:36:19 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/05 07:46:18 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/07 08:07:31 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	sa_sb(t_stack *cur, char a)
 {
 	int	tmp;
 	int	i;
-	
-	
+
+
 	if (cur->top == -1 || cur->top < 1)
 		return ;
 	i = cur->top;
@@ -49,7 +49,7 @@ void	ss(t_stack *a, t_stack *b)
 {
 	int	tmp;
 	int	i;
-	
+
 	if (a->top == -1 || a->top < 1 || b->top == -1 || b->top < 1)
 		return ;
 	i = a->top;
@@ -60,8 +60,8 @@ void	ss(t_stack *a, t_stack *b)
 	tmp = b->data[b->top];
 	b->data[i] = b->data[i - 1];
 	b->data[i - 1] = tmp;
-		write(1, "ss\n", 3);
-		return ;
+	write(1, "ss\n", 3);
+	return ;
 }
 
 void	pa(t_stack *a, t_stack *b)
@@ -83,4 +83,3 @@ void	pb(t_stack *a, t_stack *b)
 	a->top--;
 	write(1, "pb\n", 3);
 }
-	
