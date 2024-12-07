@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/05 10:31:47 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/07 23:00:36 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,25 +57,17 @@ int	main(int argc, char const **argv)
 		pile_a->data[++pile_a->top] = ft_atoi(argv[argc - 1]);
 		argc --;
 	}
-	rrr(pile_a, pile_b);
-	rr(pile_a, pile_b);
-	int i = pile_a->top;
-	int j = pile_b->top;
-	while (i >= 0 || j >= 0)
-	{
-		printf("%d   ",pile_a->data[i]);
-		if (j >= 0)
-		printf("%d\n",pile_b->data[j]);
-		else
-			printf("\n");
-		i--;
-		j--;
-	}
-	printf("\n_   _\n");
-	printf("A   B\n");
+	push_swap(pile_a, pile_b);
+	// int i = pile_a->top;
+	// while (i >= 0)
+	// {
+	// 	printf("%d\n",pile_a->data[i]);
+	// 	i--;
+	// }
+	// printf("\n_   _\n");
+	// printf("A   B\n");
 	free(pile_a->data);
 	free(pile_a);
-	free(pile_b->data);
 	free(pile_b);
 	return (0);
 }

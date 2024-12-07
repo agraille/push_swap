@@ -6,12 +6,13 @@
 #    By: agraille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 15:02:53 by agraille          #+#    #+#              #
-#    Updated: 2024/12/05 08:57:22 by agraille         ###   ########.fr        #
+#    Updated: 2024/12/07 22:43:46 by agraille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC=cc
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS=-Wall -Wextra 
+# -Werror
 
 SRC =./main.c \
 	./push_swap.c\
