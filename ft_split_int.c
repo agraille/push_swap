@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:49:15 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/09 00:06:39 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:11:14 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	ft_copy(int start, const char *s, char c)
 		end++;
 	tmp = malloc(sizeof(char) * (end - start + 1));
 	if (!tmp)
-		return (0);
+		exit(EXIT_FAILURE);// voir pour gerer la sortie proprement
 	i = 0;
 	while (start < end)
 		tmp[i++] = s[start++];
@@ -78,11 +78,6 @@ int	*ft_split_int(char const **argv, char c, int capacity)
 			{
 				word = 0;
 				split[j++] = ft_copy(i, argv[k], c);
-				if (split[j - 1] == 0)
-				{
-					free(split);
-					return (NULL);
-				}
 			}
 			else if (word == 0 && argv[k][i] == c)
 				word = 1;
