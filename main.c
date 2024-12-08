@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/08 22:51:09 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:07:07 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ int	ft_check_args(int argc, char const **argv)
 
 int	main(int argc, char const **argv)
 {
-	// t_stack	*pile_a;
-	// t_stack	*pile_b;
+	t_stack	*pile_a;
+	t_stack	*pile_b;
 	int		capacity;
 
 	if (argc == 1)
@@ -97,23 +97,19 @@ int	main(int argc, char const **argv)
 		write(2, "Error\n", 6);
 		exit(EXIT_FAILURE);
 	}
-	// pile_a = ft_init_stack(capacity);
-	// if (!pile_a)
-	// 	return (-1);
-	// pile_b = ft_init_stack(capacity);
-	// if (!pile_b)
-	// 	return (free(pile_a), -1);
-	// while (argc != 1)
-	// {
-	// 	pile_a->data[++pile_a->top] = ft_atoi(argv[argc - 1]);
-	// 	argc --;
-	// }
-	// push_swap(pile_a, pile_b);
-	// free(pile_a->data);
-	// free(pile_a);
-	// free(pile_b);
+	pile_a = ft_init_stack(capacity);
+	if (!pile_a)
+		return (-1);
+	pile_b = ft_init_stack(capacity);
+	if (!pile_b)
+		return (free(pile_a), -1);
+	free(pile_a->data);
+	pile_a->data = ft_split_int(argv + 1, ' ', capacity);
+	while (pile_a->top >= 0)
+		printf("%d\n",pile_a->data[pile_a->top--]);
+	push_swap(pile_a, pile_b);
+	free(pile_a->data);
+	free(pile_a);
+	free(pile_b);
 	return (0);
 }
-	//check si valide et les doubles
-	//check si deja trié
-

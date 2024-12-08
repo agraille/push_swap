@@ -6,13 +6,13 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:49:15 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/08 22:54:35 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/09 00:06:39 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_atoi(const char *nptr)
+static int	ft_atoi( char *nptr)
 {
 	unsigned long long int	result;
 	int						sign;
@@ -28,42 +28,67 @@ static int	ft_atoi(const char *nptr)
 	while (*nptr >= '0' && *nptr <= '9')
 	{
 		result = result * 10 + (*nptr - '0');
-		if (result * 10 / 10 != result)
-		{
-			if (sign == 1)
-				return (-1);
-			return (0);
-		}
 		nptr++;
 	}
 	return (result * sign);
 }
 
-int	*ft_split_int(char const *s, char c)
+static int	ft_copy(int start, const char *s, char c)
+{
+	char	*tmp;
+	int		i;
+	int		end;
+	int		value;
+
+	end = start;
+	while (s[end] && s[end] != c)
+		end++;
+	tmp = malloc(sizeof(char) * (end - start + 1));
+	if (!tmp)
+		return (0);
+	i = 0;
+	while (start < end)
+		tmp[i++] = s[start++];
+	tmp[i] = '\0';
+	value = ft_atoi(tmp);
+	free(tmp);
+	return (value);
+}
+
+int	*ft_split_int(char const **argv, char c, int capacity)
 {
 	int		word;
 	int		i;
 	int		j;
+	int		k;
 	int		*split;
 
-	i = -1;
-	word = 1;
 	j = 0;
-	split = malloc(sizeof(char *) * (ft_count_word(s, c)));
+	k = 0;
+	split = malloc(sizeof(int) * capacity);
 	if (!split)
 		return (NULL);
-	while (s[++i])
+	while (argv[k])
 	{
-		if (word == 1 && s[i] != c)
+		i = 0;
+		word = 1;
+		while (argv[k][i])
 		{
-			split[j++] = ft_copy(i, s, c);
-			if (split[j - 1] == NULL)
-				return (ft_free_split(split));
-			word = 0;
+			if (word == 1 && argv[k][i] != c)
+			{
+				word = 0;
+				split[j++] = ft_copy(i, argv[k], c);
+				if (split[j - 1] == 0)
+				{
+					free(split);
+					return (NULL);
+				}
+			}
+			else if (word == 0 && argv[k][i] == c)
+				word = 1;
+			i++;
 		}
-		else if (word == 0 && s[i] == c)
-			word = 1;
+		k++;
 	}
-	split[j] = NULL;
 	return (split);
 }
