@@ -6,69 +6,112 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/07 23:00:36 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/08 22:51:09 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_atoi(const char *nptr)
+static int	ft_is_int(const char *str)
 {
-	unsigned long long int	result;
-	int						sign;
+	long	num;
+	int		s;
 
-	sign = 1;
-	result = 0;
-	if (*nptr == '+' || *nptr == '-')
+	num = 0;
+	s = 1;
+	if (*str == '+' || *str == '-')
 	{
-		if (*nptr == '-')
-			sign *= -1;
-		nptr++;
+		if (*str == '-')
+			s = -1;
+		str++;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
+	if (*str < '0' || *str > '9')
+		return (0);
+	while (*str >= '0' && *str <= '9')
 	{
-		result = result * 10 + (*nptr - '0');
-		if (result * 10 / 10 != result)
-		{
-			if (sign == 1)
-				return (-1);
+		num = num * 10 + (*str - '0');
+		if ((s == 1 && num > INT_MAX) || (s == -1 && num > (long)INT_MAX + 1))
 			return (0);
-		}
-		nptr++;
+		str++;
 	}
-	return (result * sign);
+	return (1);
+}
+
+static int	ft_check_single_arg(const char *arg)
+{
+	int		i;
+	int		count;
+	char	*start;
+
+	i = 0;
+	count = 0;
+	while (arg[i])
+	{
+		if (arg[i] == ' ')
+		{
+			i++;
+			continue ;
+		}
+		start = (char *)&arg[i];
+		while (arg[i] && arg[i] != ' ')
+			i++;
+		if (!ft_is_int(start))
+			return (0);
+		else
+			count++;
+	}
+	return (count);
+}
+
+int	ft_check_args(int argc, char const **argv)
+{
+	int	i;
+	int	count;
+	int	is_valid;
+
+	i = 1;
+	count = 0;
+	is_valid = 0;
+	while (i < argc)
+	{
+		is_valid = ft_check_single_arg(argv[i]);
+		if (is_valid == 0)
+			return (0);
+		count += is_valid;
+		i++;
+	}
+	return (count);
 }
 
 int	main(int argc, char const **argv)
 {
-	t_stack	*pile_a;
-	t_stack	*pile_b;
+	// t_stack	*pile_a;
+	// t_stack	*pile_b;
+	int		capacity;
 
 	if (argc == 1)
 		return (-1);
-	pile_a = ft_init_stack(argc - 1);
-	if (!pile_a)
-		return (-1);
-	pile_b = ft_init_stack(argc - 1);
-	if (!pile_b)
-		return (free(pile_a), 0);
-	while (argc != 1)
+	capacity = ft_check_args(argc, argv);
+	if (capacity == 0)
 	{
-		pile_a->data[++pile_a->top] = ft_atoi(argv[argc - 1]);
-		argc --;
+		write(2, "Error\n", 6);
+		exit(EXIT_FAILURE);
 	}
-	push_swap(pile_a, pile_b);
-	// int i = pile_a->top;
-	// while (i >= 0)
+	// pile_a = ft_init_stack(capacity);
+	// if (!pile_a)
+	// 	return (-1);
+	// pile_b = ft_init_stack(capacity);
+	// if (!pile_b)
+	// 	return (free(pile_a), -1);
+	// while (argc != 1)
 	// {
-	// 	printf("%d\n",pile_a->data[i]);
-	// 	i--;
+	// 	pile_a->data[++pile_a->top] = ft_atoi(argv[argc - 1]);
+	// 	argc --;
 	// }
-	// printf("\n_   _\n");
-	// printf("A   B\n");
-	free(pile_a->data);
-	free(pile_a);
-	free(pile_b);
+	// push_swap(pile_a, pile_b);
+	// free(pile_a->data);
+	// free(pile_a);
+	// free(pile_b);
 	return (0);
 }
 	//check si valide et les doubles
