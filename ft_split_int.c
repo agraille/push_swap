@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:49:15 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/09 00:11:14 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/09 07:00:00 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	ft_copy(int start, const char *s, char c)
 	return (value);
 }
 
-int	*ft_split_int(char const **argv, char c, int capacity)
+int	*ft_splitoi(char const **argv, char c, int capacity)
 {
 	int		word;
 	int		i;
