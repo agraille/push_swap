@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/09 08:11:27 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/09 08:40:19 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,3 +119,4 @@ int	main(int argc, char const **argv)
 	free(pile_b);
 	return (0);
 }
+//check si deja trie ou si doublon
