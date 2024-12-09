@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/09 08:40:19 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:27:49 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,6 @@ int	main(int argc, char const **argv)
 	temp = ft_splitoi(argv + 1, ' ', capacity);
 	while (capacity--)
 		pile_a->data[++pile_a->top] = temp[capacity];
-	// for (int i = pile_a->top; i >= 0; i--)
-	// {
-	// 	printf("%d\n",pile_a->data[i]);
-	// }
-	free(temp);
 	push_swap(pile_a, pile_b);
 	free(pile_a->data);
 	free(pile_b->data);
