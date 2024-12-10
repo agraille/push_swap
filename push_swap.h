@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:05:59 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/10 15:56:04 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:32:24 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct s_stack
 {
 	int	*data;
 	int	top;
+	int	b_min;
+	int	b_max;
 }	t_stack;
 
 t_stack		*ft_init_stack(int capacity);

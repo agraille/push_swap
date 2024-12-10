@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:36:19 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/10 12:55:37 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:31:22 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,17 @@ void	pb(t_stack *a, t_stack *b)
 		return ;
 	b->data[++b->top] = a->data[a->top];
 	a->top--;
+	if (b->top == 0)
+	{
+		b->b_min = b->data[b->top];
+		b->b_max = b->data[b->top];
+	}
+	else
+	{
+		if (b->data[b->top] < b->b_min)
+			b->b_min = b->data[b->top];
+		if (b->data[b->top] > b->b_max)
+			b->b_max = b->data[b->top];
+	}
 	write(1, "pb\n", 3);
 }
