@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:36:19 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/09 07:52:49 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:55:37 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_stack	*ft_init_stack(int capacity)
 	new = malloc(sizeof(t_stack));
 	if (!new)
 		return (NULL);
-	new->capacity = capacity;
 	new->top = -1;
 	new->data = malloc(sizeof(int *) * capacity);
 	if (!new->data)
@@ -69,7 +68,6 @@ void	pa(t_stack *a, t_stack *b)
 	if (b->top == -1)
 		return ;
 	a->data[++a->top] = b->data[b->top];
-	b->data[b->top] = 0;
 	b->top--;
 	write(1, "pa\n", 3);
 }
@@ -79,7 +77,6 @@ void	pb(t_stack *a, t_stack *b)
 	if (a->top == -1)
 		return ;
 	b->data[++b->top] = a->data[a->top];
-	a->data[a->top] = 0;
 	a->top--;
 	write(1, "pb\n", 3);
 }

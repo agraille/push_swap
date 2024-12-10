@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/09 14:27:49 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:32:40 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	ft_check_single_arg(const char *arg)
 	return (count);
 }
 
-int	ft_check_args(int argc, char const **argv)
+static int	ft_check_args(int argc, char const **argv)
 {
 	int	i;
 	int	count;
@@ -81,6 +81,14 @@ int	ft_check_args(int argc, char const **argv)
 		i++;
 	}
 	return (count);
+}
+static void	ft_free(t_stack *a, t_stack *b, int *tmp)
+{
+	free(tmp);
+	free(a->data);
+	free(b->data);
+	free(a);
+	free(b);
 }
 
 int	main(int argc, char const **argv)
@@ -108,10 +116,7 @@ int	main(int argc, char const **argv)
 	while (capacity--)
 		pile_a->data[++pile_a->top] = temp[capacity];
 	push_swap(pile_a, pile_b);
-	free(pile_a->data);
-	free(pile_b->data);
-	free(pile_a);
-	free(pile_b);
+	ft_free(pile_a, pile_b, temp);
 	return (0);
 }
 //check si deja trie ou si doublon

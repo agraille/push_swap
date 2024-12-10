@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:05:59 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/09 14:34:40 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:56:04 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_stack
 {
 	int	*data;
 	int	top;
-	int	capacity;
 }	t_stack;
 
 t_stack		*ft_init_stack(int capacity);
@@ -36,5 +35,6 @@ void		rra_rrb(t_stack *cur, char c);
 void		rrr(t_stack *a, t_stack *b);
 void		push_swap(t_stack *a, t_stack *b);
 int			*ft_splitoi(char const **argv, char c, int capacity);
+int			ft_abs(int n);
 
 #endif

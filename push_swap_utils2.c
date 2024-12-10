@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 18:42:09 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/07 08:08:23 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:55:49 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,13 @@ void	rrr(t_stack *a, t_stack *b)
 	rra_rrb(a, 0);
 	rra_rrb(b, 0);
 	write(1, "rrr\n", 4);
+}
+
+int ft_abs(int n)
+{
+    if (n < 0)
+    {
+        return -n;
+    }
+    return n;
 }
