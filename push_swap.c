@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:19:54 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/11 18:01:31 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/11 18:04:23 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int cal_cost_b(t_stack *b, int value_a)
 		
 		while (i >= 0)
         {
-            // if (i == b->top && value_a > b->data[i] && value_a < b->data[0])
-			// 	break ;
+            if (i == b->top && value_a > b->data[i] && value_a < b->data[0])
+				break ;
 			if (value_a > b->data[i] && value_a < b->data[i + 1])
 				break ;
 			i--;
