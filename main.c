@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 08:58:09 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:30:55 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ static int	ft_check_args(int argc, char const **argv)
 	}
 	return (count);
 }
-static void	ft_free(t_stack *a, t_stack *b, int *tmp)
+
+void	ft_free(t_stack *a, t_stack *b, int *tmp)
 {
 	free(tmp);
 	free(a->data);
@@ -115,7 +116,7 @@ int	main(int argc, char const **argv)
 	temp = ft_splitoi(argv + 1, ' ', capacity);
 	while (capacity--)
 		pile_a->data[++pile_a->top] = temp[capacity];
-	push_swap(pile_a, pile_b);
+	push_swap(pile_a, pile_b, temp);
 	ft_free(pile_a, pile_b, temp);
 	return (0);
 }

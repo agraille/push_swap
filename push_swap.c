@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:19:54 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 12:37:18 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:37:33 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,52 +14,11 @@
 
 int	cal_cost_a(t_stack *a, int i)
 {
-    int	cost;
-
-    if (i >= a->top / 2)
-    {
-        cost = a->top - i;
-    }
-    else
-    {
-        cost = -(i + 1);
-    }
-    return (cost);
-}
-
-int	cal_cost_b(t_stack *b, int value_a)
-{
 	int	cost;
-	int	i;
 
-	i = b->top;
-	if (value_a > b->b_max || value_a < b->b_min)
+	if (i >= a->top / 2)
 	{
-		while (i >= 0 && b->data[i] != b->b_max)
-			i--;
-	}
-	else
-	{
-		while (i >= 0)
-		{
-			if (i == b->top && value_a > b->data[i] && value_a < b->data[0])
-				break ;
-			if (i < b->top && value_a > b->data[i] && value_a < b->data[i + 1])
-				break ;
-			if (i == b->top && value_a < b->data[i] && value_a > b->data[0])
-			{
-				i--;
-				continue ;
-			}
-			if (i < b->top && value_a < b->data[i] && value_a > b->data[i + 1]
-				&& b->data[i + 1] != b->b_min)
-				break ;
-			i--;
-		}
-	}
-	if (i >= b->top / 2)
-	{
-		cost = b->top - i;
+		cost = a->top - i;
 	}
 	else
 	{
@@ -106,14 +65,16 @@ void	time_to_move(t_stack *a, t_stack *b, int best_index)
 	pb(a, b);
 }
 
-void	push_min_cost(t_stack *a, t_stack *b)
+void	push_min_cost(t_stack *a, t_stack *b, int i)
 {
-    int i;
-    int min_cost;
-    int best_index = 0;
-    int cost_a, cost_b, total_cost;
+	int	min_cost;
+	int	best_index;
+	int	cost_a;
+	int	cost_b;
+	int	total_cost;
 
 	i = a->top;
+	best_index = 0;
 	min_cost = INT_MAX;
 	while (i >= 0)
 	{
@@ -130,19 +91,25 @@ void	push_min_cost(t_stack *a, t_stack *b)
 	time_to_move(a, b, best_index);
 }
 
-void	push_swap(t_stack *a, t_stack *b)
+void	push_swap(t_stack *a, t_stack *b, int *temp)
 {
 	int	i;
 
+	if (!check_double(a))
+	{
+		ft_free(a, b, temp);
+		write(2, "Error\n", 6);
+		exit(EXIT_FAILURE);
+	}
 	if (is_sorted(a))
 		return ;
 	pb(a, b);
 	pb(a, b);
+	i = 0;
 	while (a->top != -1)
 	{
-		push_min_cost(a, b);
+		push_min_cost(a, b, i);
 	}
-	i = 0;
 	while (b->data[i] != b->b_min)
 		ra_rb(b, 'b');
 	while (b->top != -1)

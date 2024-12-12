@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:49:15 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/09 07:00:00 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:19:51 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	ft_copy(int start, const char *s, char c)
 		end++;
 	tmp = malloc(sizeof(char) * (end - start + 1));
 	if (!tmp)
-		exit(EXIT_FAILURE);// voir pour gerer la sortie proprement
+		exit(EXIT_FAILURE);
 	i = 0;
 	while (start < end)
 		tmp[i++] = s[start++];

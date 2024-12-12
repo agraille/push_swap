@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:05:59 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 12:37:13 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:33:51 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ void		ra_rb(t_stack *cur, char c);
 void		rr(t_stack *a, t_stack *b);
 void		rra_rrb(t_stack *cur, char c);
 void		rrr(t_stack *a, t_stack *b);
-void		push_swap(t_stack *a, t_stack *b);
+void		push_swap(t_stack *a, t_stack *b, int *temp);
 int			*ft_splitoi(char const **argv, char c, int capacity);
 int			ft_abs(int cost_a, int cost_b);
 int			is_sorted(t_stack *a);
+void		ft_free(t_stack *a, t_stack *b, int *tmp);
+int			check_double(t_stack *a);
+int			cal_cost_b(t_stack *b, int value_a);
 #endif
