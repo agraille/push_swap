@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 12:36:08 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 14:04:50 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:16:53 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,12 @@ int	check_double(t_stack *a)
 		i++;
 	}
 	return (1);
+}
+void	ft_free(t_stack *a, t_stack *b, int *tmp)
+{
+	free(tmp);
+	free(a->data);
+	free(b->data);
+	free(a);
+	free(b);
 }

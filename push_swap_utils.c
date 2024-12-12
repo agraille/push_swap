@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:36:19 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 12:34:16 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:14:31 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_stack	*ft_init_stack(int capacity)
 	if (!new)
 		return (NULL);
 	new->top = -1;
-	new->data = malloc(sizeof(int *) * capacity);
+	new->data = malloc(sizeof(int) * capacity);
 	if (!new->data)
 		return (free(new), NULL);
 	return (new);

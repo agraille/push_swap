@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:49:15 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 13:19:51 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:05:21 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	ft_copy(int start, const char *s, char c)
 		end++;
 	tmp = malloc(sizeof(char) * (end - start + 1));
 	if (!tmp)
-		exit(EXIT_FAILURE);
+		return (-1);
 	i = 0;
 	while (start < end)
 		tmp[i++] = s[start++];
@@ -55,19 +55,13 @@ static int	ft_copy(int start, const char *s, char c)
 	return (value);
 }
 
-int	*ft_splitoi(char const **argv, char c, int capacity)
+static int	*ft_split_init(int k, int *split, char const **argv, char c)
 {
-	int		word;
-	int		i;
-	int		j;
-	int		k;
-	int		*split;
+	int	word;
+	int	i;
+	int	j;
 
 	j = 0;
-	k = 0;
-	split = malloc(sizeof(int) * capacity);
-	if (!split)
-		return (NULL);
 	while (argv[k])
 	{
 		i = 0;
@@ -85,5 +79,18 @@ int	*ft_splitoi(char const **argv, char c, int capacity)
 		}
 		k++;
 	}
+	return (split);
+}
+
+int	*ft_splitoi(char const **argv, char c, int capacity)
+{
+	int		k;
+	int		*split;
+
+	k = 0;
+	split = malloc(sizeof(int) * capacity);
+	if (!split)
+		return (NULL);
+	split = ft_split_init(k, split, argv, c);
 	return (split);
 }

@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 13:30:55 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:21:12 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,17 @@ static int	ft_check_args(int argc, char const **argv)
 	return (count);
 }
 
-void	ft_free(t_stack *a, t_stack *b, int *tmp)
+static int	init_capacity(const char **argv, int argc)
 {
-	free(tmp);
-	free(a->data);
-	free(b->data);
-	free(a);
-	free(b);
+	int	capacity;
+
+	capacity = ft_check_args(argc, argv);
+	if (capacity == 0)
+	{
+		write(2, "Error\n", 6);
+		exit(EXIT_FAILURE);
+	}
+	return (capacity);
 }
 
 int	main(int argc, char const **argv)
@@ -101,12 +105,7 @@ int	main(int argc, char const **argv)
 
 	if (argc == 1)
 		return (-1);
-	capacity = ft_check_args(argc, argv);
-	if (capacity == 0)
-	{
-		write(2, "Error\n", 6);
-		exit(EXIT_FAILURE);
-	}
+	capacity = init_capacity(argv, argc);
 	pile_a = ft_init_stack(capacity);
 	if (!pile_a)
 		return (-1);
@@ -114,10 +113,11 @@ int	main(int argc, char const **argv)
 	if (!pile_b)
 		return (free(pile_a), -1);
 	temp = ft_splitoi(argv + 1, ' ', capacity);
+	if (!temp)
+		return (-1);
 	while (capacity--)
 		pile_a->data[++pile_a->top] = temp[capacity];
 	push_swap(pile_a, pile_b, temp);
 	ft_free(pile_a, pile_b, temp);
 	return (0);
 }
-//check si deja trie ou si doublon
