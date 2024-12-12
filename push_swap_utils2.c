@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 18:42:09 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 11:41:34 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/12 12:35:14 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,32 +72,31 @@ void	rrr(t_stack *a, t_stack *b)
 	write(1, "rrr\n", 4);
 }
 
-int ft_abs(int cost_a, int cost_b)
+int	ft_abs(int cost_a, int cost_b)
 {
-    int result;
+	int	result;
 
-    if (cost_a >= 0 && cost_b >= 0)
-    {
-        if (cost_a > cost_b)
-            result = cost_a;
-        else
-            result = cost_b;
-    }
-    else if (cost_a < 0 && cost_b < 0)
-    {
-        if (-cost_a > -cost_b)
-            result = -cost_a;
-        else
-            result = -cost_b;
-    }
-    else
-    {
+	if (cost_a >= 0 && cost_b >= 0)
+	{
+		if (cost_a > cost_b)
+			result = cost_a;
+		else
+			result = cost_b;
+	}
+	else if (cost_a < 0 && cost_b < 0)
+	{
+		if (-cost_a > -cost_b)
+			result = -cost_a;
+		else
+			result = -cost_b;
+	}
+	else
+	{
 		if (cost_a < 0)
-            cost_a = -cost_a;
-        if (cost_b < 0)
-            cost_b = -cost_b;
-        result = cost_a + cost_b;
-    }
-	// printf("RESULT = %d\n", result);
-    return (result);
+			cost_a = -cost_a;
+		if (cost_b < 0)
+			cost_b = -cost_b;
+		result = cost_a + cost_b;
+	}
+	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:05:59 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 09:06:56 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/12 12:37:13 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ void		rrr(t_stack *a, t_stack *b);
 void		push_swap(t_stack *a, t_stack *b);
 int			*ft_splitoi(char const **argv, char c, int capacity);
 int			ft_abs(int cost_a, int cost_b);
-
+int			is_sorted(t_stack *a);
 #endif

@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:36:19 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/10 20:31:22 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/12 12:34:16 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	sa_sb(t_stack *cur, char a)
 {
 	int	tmp;
 	int	i;
-
 
 	if (cur->top == -1 || cur->top < 1)
 		return ;
