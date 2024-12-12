@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:19:54 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/11 18:04:23 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/12 12:03:32 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	cal_cost_a(t_stack *a, int i)
     }
     else
     {
-        cost = -(a->top - i + 1);
+        cost = -(i + 1);
     }
     return (cost);
 }
@@ -67,8 +67,15 @@ int cal_cost_b(t_stack *b, int value_a)
         {
             if (i == b->top && value_a > b->data[i] && value_a < b->data[0])
 				break ;
-			if (value_a > b->data[i] && value_a < b->data[i + 1])
+			if (i < b->top && value_a > b->data[i] && value_a < b->data[i + 1])
 				break ;
+			if (i == b->top && value_a < b->data[i] && value_a > b->data[0])
+			{
+				i--;
+				continue ;
+			}
+			if (i < b->top && value_a < b->data[i] && value_a > b->data[i + 1] && b->data[i + 1] != b->b_min)
+                break;
 			i--;
 		}
 	}
@@ -78,22 +85,23 @@ int cal_cost_b(t_stack *b, int value_a)
     }
     else
     {
-        cost = -(b->top - i + 1);
+        cost = -(i + 1);
     }
-    return (cost);
+	// printf("COST EST DE = %d\n", cost);
+	return (cost);
 }
 
-void rotate(t_stack *stack, int *cost, char stack_id)
+void rotate(t_stack *stack, int cost, char stack_id)
 {
-    while (*cost > 0)
+    while (cost > 0)
     {
         ra_rb(stack, stack_id);
-        (*cost)--;
+        cost--;
     }
-    while (*cost > 0)
+    while (cost < 0)
     {
         rra_rrb(stack, stack_id);
-        (*cost)++;
+        cost++;
     }
 }
 
@@ -101,6 +109,7 @@ void time_to_move(t_stack *a, t_stack *b, int best_index)
 {
     int cost_a;
     int cost_b;
+	
 	cost_a = cal_cost_a(a, best_index);
 	cost_b = cal_cost_b(b, a->data[best_index]);
     while (cost_a > 0 && cost_b > 0)
@@ -115,8 +124,10 @@ void time_to_move(t_stack *a, t_stack *b, int best_index)
         cost_a++;
         cost_b++;
     }
-    rotate(a, &cost_a, 'a');
-    rotate(b, &cost_b, 'b');
+	// printf("COST DE A = %d\n", cost_a);
+	// printf("COST DE B= %d\n", cost_b);
+    rotate(a, cost_a, 'a');
+    rotate(b, cost_b, 'b');
     pb(a, b);
 }
 
@@ -133,14 +144,17 @@ void push_min_cost(t_stack *a, t_stack *b)
     {
         cost_a = cal_cost_a(a, i);
         cost_b = cal_cost_b(b, a->data[i]);
-        total_cost = ft_abs(cost_a) + ft_abs(cost_b);
+        total_cost = ft_abs(cost_a, cost_b);
+		// printf("Index: %d, Cost A: %d, Cost B: %d, Total Cost: %d\n", i, cost_a, cost_b, total_cost);
         if (total_cost < min_cost)
         {
             min_cost = total_cost;
             best_index = i;
+
         }
 		i--;
     }
+	// printf("BEST INDEX = %d\n", a->data[best_index]);
     time_to_move(a, b, best_index);
 }
 
