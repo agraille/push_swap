@@ -6,13 +6,13 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:19:54 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 13:37:33 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/12 14:07:18 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	cal_cost_a(t_stack *a, int i)
+static int	cal_cost_a(t_stack *a, int i)
 {
 	int	cost;
 
@@ -27,7 +27,7 @@ int	cal_cost_a(t_stack *a, int i)
 	return (cost);
 }
 
-void	rotate(t_stack *stack, int cost, char stack_id)
+static void	rotate(t_stack *stack, int cost, char stack_id)
 {
 	while (cost > 0)
 	{
@@ -41,7 +41,7 @@ void	rotate(t_stack *stack, int cost, char stack_id)
 	}
 }
 
-void	time_to_move(t_stack *a, t_stack *b, int best_index)
+static void	time_to_move(t_stack *a, t_stack *b, int best_index)
 {
 	int	cost_a;
 	int	cost_b;
@@ -65,7 +65,7 @@ void	time_to_move(t_stack *a, t_stack *b, int best_index)
 	pb(a, b);
 }
 
-void	push_min_cost(t_stack *a, t_stack *b, int i)
+static void	push_min_cost(t_stack *a, t_stack *b, int i)
 {
 	int	min_cost;
 	int	best_index;

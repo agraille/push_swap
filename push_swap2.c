@@ -6,11 +6,32 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 12:36:08 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 13:38:29 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/12 14:04:50 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	cal_cost_bis(t_stack *b, int value_a, int i)
+{
+	while (i >= 0)
+	{
+		if (i == b->top && value_a > b->data[i] && value_a < b->data[0])
+			break ;
+		if (i < b->top && value_a > b->data[i] && value_a < b->data[i + 1])
+			break ;
+		if (i == b->top && value_a < b->data[i] && value_a > b->data[0])
+		{
+			i--;
+			continue ;
+		}
+		if (i < b->top && value_a < b->data[i] && value_a > b->data[i + 1]
+			&& b->data[i + 1] != b->b_min)
+			break ;
+		i--;
+	}
+	return (i);
+}
 
 int	cal_cost_b(t_stack *b, int value_a)
 {
@@ -24,24 +45,7 @@ int	cal_cost_b(t_stack *b, int value_a)
 			i--;
 	}
 	else
-	{
-		while (i >= 0)
-		{
-			if (i == b->top && value_a > b->data[i] && value_a < b->data[0])
-				break ;
-			if (i < b->top && value_a > b->data[i] && value_a < b->data[i + 1])
-				break ;
-			if (i == b->top && value_a < b->data[i] && value_a > b->data[0])
-			{
-				i--;
-				continue ;
-			}
-			if (i < b->top && value_a < b->data[i] && value_a > b->data[i + 1]
-				&& b->data[i + 1] != b->b_min)
-				break ;
-			i--;
-		}
-	}
+		i = cal_cost_bis(b, value_a, i);
 	if (i >= b->top / 2)
 	{
 		cost = b->top - i;
