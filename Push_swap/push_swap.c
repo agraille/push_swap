@@ -6,11 +6,11 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:19:54 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 15:43:54 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:53:40 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../Includes/push_swap.h"
 
 static int	cal_cost_a(t_stack *a, int i)
 {
@@ -65,7 +65,7 @@ static void	time_to_move(t_stack *a, t_stack *b, int best_index)
 	pb(a, b);
 }
 
-static void	push_min_cost(t_stack *a, t_stack *b, int i)
+void	push_min_cost(t_stack *a, t_stack *b, int i)
 {
 	int	min_cost;
 	int	best_index;
@@ -103,15 +103,29 @@ void	push_swap(t_stack *a, t_stack *b, int *temp)
 	}
 	if (is_sorted(a))
 		return ;
+	if (a->top == 2)
+    {
+        sort_three(a);
+        return;
+    }
+    if (a->top == 4)
+    {
+        sort_five(a, b);
+        return;
+    }
 	pb(a, b);
 	pb(a, b);
 	i = 0;
 	while (a->top != -1)
-	{
 		push_min_cost(a, b, i);
-	}
 	while (b->data[i] != b->b_min)
-		ra_rb(b, 'b');
+		i++;
+	if (i >= b->top / 2)
+		while (b->data[0] != b->b_min)
+			ra_rb(b, 'b');
+	else
+		while (b->data[0] != b->b_min)
+			rra_rrb(b, 'b');
 	while (b->top != -1)
 		pa(a, b);
 }

@@ -6,11 +6,11 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:49:15 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 15:05:21 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:39:02 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../Includes/push_swap.h"
 
 static int	ft_atoi( char *nptr)
 {
@@ -72,6 +72,8 @@ static int	*ft_split_init(int k, int *split, char const **argv, char c)
 			{
 				word = 0;
 				split[j++] = ft_copy(i, argv[k], c);
+				if (split[j - 1] == -1)
+					return (NULL);
 			}
 			else if (word == 0 && argv[k][i] == c)
 				word = 1;

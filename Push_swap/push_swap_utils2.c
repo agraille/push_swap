@@ -6,11 +6,11 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 18:42:09 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 12:35:14 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:39:18 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../Includes/push_swap.h"
 
 void	ra_rb(t_stack *cur, char c)
 {
@@ -21,12 +21,12 @@ void	ra_rb(t_stack *cur, char c)
 		return ;
 	i = cur->top;
 	tmp = cur->data[cur->top];
-	while (i >= 0)
+	while (i > 0)
 	{
 		cur->data[i] = cur->data[i - 1];
 		i--;
 	}
-	cur->data[i + 1] = tmp;
+	cur->data[0] = tmp;
 	if (c == 'a')
 		write(1, "ra\n", 3);
 	else if (c == 'b')
@@ -51,7 +51,7 @@ void	rra_rrb(t_stack *cur, char c)
 		return ;
 	i = 0;
 	tmp = cur->data[0];
-	while (i <= cur->top)
+	while (i < cur->top)
 	{
 		cur->data[i] = cur->data[i + 1];
 		++i;

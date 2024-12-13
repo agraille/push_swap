@@ -6,11 +6,11 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:36:19 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 15:14:31 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:41:53 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../Includes/push_swap.h"
 
 t_stack	*ft_init_stack(int capacity)
 {
@@ -20,6 +20,10 @@ t_stack	*ft_init_stack(int capacity)
 	if (!new)
 		return (NULL);
 	new->top = -1;
+	new->a_min = INT_MAX;
+	new->a_min = INT_MIN;
+	new->b_max = 0;
+	new->b_min = 0;
 	new->data = malloc(sizeof(int) * capacity);
 	if (!new->data)
 		return (free(new), NULL);

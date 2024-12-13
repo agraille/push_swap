@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:05:59 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 13:33:51 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/13 16:41:42 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_stack
 	int	top;
 	int	b_min;
 	int	b_max;
+	int a_min;
+	int a_max;
 }	t_stack;
 
 t_stack		*ft_init_stack(int capacity);
@@ -42,4 +44,7 @@ int			is_sorted(t_stack *a);
 void		ft_free(t_stack *a, t_stack *b, int *tmp);
 int			check_double(t_stack *a);
 int			cal_cost_b(t_stack *b, int value_a);
+void		sort_five(t_stack *a, t_stack *b);
+void		sort_three(t_stack *a);
+void		push_min_cost(t_stack *a, t_stack *b, int i);
 #endif

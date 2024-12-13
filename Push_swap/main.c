@@ -6,11 +6,11 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/12 15:21:12 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:39:09 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../Includes/push_swap.h"
 
 static int	ft_is_int(const char *str)
 {
