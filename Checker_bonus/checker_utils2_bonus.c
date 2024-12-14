@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   checker_utils2_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 16:36:19 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/13 21:50:47 by agraille         ###   ########.fr       */
+/*   Created: 2024/12/13 22:15:01 by agraille          #+#    #+#             */
+/*   Updated: 2024/12/14 00:12:37 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/push_swap.h"
+#include "checker_bonus.h"
 
 t_stack	*ft_init_stack(int capacity)
 {
@@ -20,17 +20,13 @@ t_stack	*ft_init_stack(int capacity)
 	if (!new)
 		return (NULL);
 	new->top = -1;
-	new->a_min = INT_MAX;
-	new->a_max = INT_MIN;
-	new->b_max = 0;
-	new->b_min = 0;
 	new->data = malloc(sizeof(int) * capacity);
 	if (!new->data)
 		return (free(new), NULL);
 	return (new);
 }
 
-void	sa_sb(t_stack *cur, char a)
+void	sa_sb(t_stack *cur)
 {
 	int	tmp;
 	int	i;
@@ -41,10 +37,6 @@ void	sa_sb(t_stack *cur, char a)
 	tmp = cur->data[cur->top];
 	cur->data[i] = cur->data[i - 1];
 	cur->data[i - 1] = tmp;
-	if (a == 'a')
-		write(1, "sa\n", 3);
-	else
-		write(1, "sb\n", 3);
 }
 
 void	ss(t_stack *a, t_stack *b)
@@ -62,7 +54,6 @@ void	ss(t_stack *a, t_stack *b)
 	tmp = b->data[b->top];
 	b->data[i] = b->data[i - 1];
 	b->data[i - 1] = tmp;
-	write(1, "ss\n", 3);
 	return ;
 }
 
@@ -72,7 +63,6 @@ void	pa(t_stack *a, t_stack *b)
 		return ;
 	a->data[++a->top] = b->data[b->top];
 	b->top--;
-	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack *a, t_stack *b)
@@ -81,17 +71,4 @@ void	pb(t_stack *a, t_stack *b)
 		return ;
 	b->data[++b->top] = a->data[a->top];
 	a->top--;
-	if (b->top == 0)
-	{
-		b->b_min = b->data[b->top];
-		b->b_max = b->data[b->top];
-	}
-	else
-	{
-		if (b->data[b->top] < b->b_min)
-			b->b_min = b->data[b->top];
-		if (b->data[b->top] > b->b_max)
-			b->b_max = b->data[b->top];
-	}
-	write(1, "pb\n", 3);
 }

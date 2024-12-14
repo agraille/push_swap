@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:19:54 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/13 15:53:40 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/13 22:05:38 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ void	push_min_cost(t_stack *a, t_stack *b, int i)
 
 void	push_swap(t_stack *a, t_stack *b, int *temp)
 {
-	int	i;
-
 	if (!check_double(a))
 	{
 		ft_free(a, b, temp);
@@ -104,28 +102,14 @@ void	push_swap(t_stack *a, t_stack *b, int *temp)
 	if (is_sorted(a))
 		return ;
 	if (a->top == 2)
-    {
-        sort_three(a);
-        return;
-    }
-    if (a->top == 4)
-    {
-        sort_five(a, b);
-        return;
-    }
-	pb(a, b);
-	pb(a, b);
-	i = 0;
-	while (a->top != -1)
-		push_min_cost(a, b, i);
-	while (b->data[i] != b->b_min)
-		i++;
-	if (i >= b->top / 2)
-		while (b->data[0] != b->b_min)
-			ra_rb(b, 'b');
-	else
-		while (b->data[0] != b->b_min)
-			rra_rrb(b, 'b');
-	while (b->top != -1)
-		pa(a, b);
+	{
+		sort_three(a);
+		return ;
+	}
+	if (a->top == 4)
+	{
+		sort_five(a, b);
+		return ;
+	}
+	start_swap(a, b);
 }

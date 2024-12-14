@@ -6,7 +6,7 @@
 #    By: agraille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 15:02:53 by agraille          #+#    #+#              #
-#    Updated: 2024/12/13 14:27:04 by agraille         ###   ########.fr        #
+#    Updated: 2024/12/13 21:33:50 by agraille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,13 +36,17 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)╚═══════════════════════════╝$(RESET)"
 	
 clean :
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 	@echo "$(GREEN)╔═══════════════════════════╗$(RESET)"
 	@echo "$(GREEN)║        Clean OK! 🧽       ║$(RESET)"
 	@echo "$(GREEN)╚═══════════════════════════╝$(RESET)"
 
-fclean : clean
-	rm -f $(NAME)
+fclean :
+	@rm -f $(OBJ) $(NAME)
+	@echo "$(GREEN)╔═══════════════════════════╗$(RESET)"
+	@echo "$(GREEN)║        Fclean OK! 🪣       ║$(RESET)"
+	@echo "$(GREEN)╚═══════════════════════════╝$(RESET)"
+
 
 re : fclean all
 
