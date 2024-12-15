@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 22:15:09 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/13 22:42:09 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/15 23:00:30 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,64 +35,73 @@ static int	ft_atoi( char *nptr)
 
 static int	ft_copy2(int start, const char *s, char c)
 {
-	char	*tmp;
-	int		i;
-	int		end;
-	int		value;
+	char		*tmp;
+	int			i;
+	int			end;
+	t_result	result;
 
 	end = start;
 	while (s[end] && s[end] != c)
 		end++;
 	tmp = malloc(sizeof(char) * (end - start + 1));
 	if (!tmp)
-		return (-1);
+	{
+		result.error = 1;
+		return (result.error);
+	}
 	i = 0;
 	while (start < end)
 		tmp[i++] = s[start++];
 	tmp[i] = '\0';
-	value = ft_atoi(tmp);
+	result.value = ft_atoi(tmp);
 	free(tmp);
-	return (value);
+	return (result.value);
 }
 
-static int	*ft_split_init(int k, int *split, char const **argv, char c)
+static int	*ft_split_init(t_result res, int *split, char const **argv, char c)
 {
-	int	word;
-	int	i;
-	int	j;
+	int			word;
+	int			i;
+	int			j;
 
 	j = 0;
-	while (argv[k])
+	while (argv[res.k])
 	{
-		i = 0;
+		i = -1;
 		word = 1;
-		while (argv[k][i])
+		while (argv[res.k][++i])
 		{
-			if (word == 1 && argv[k][i] != c)
+			if (word == 1 && argv[res.k][i] != c)
 			{
 				word = 0;
-				split[j++] = ft_copy2(i, argv[k], c);
-				if (split[j - 1] == -1)
+				split[j++] = ft_copy2(i, argv[res.k], c);
+				if (res.error)
 					return (NULL);
 			}
-			else if (word == 0 && argv[k][i] == c)
+			else if (word == 0 && argv[res.k][i] == c)
 				word = 1;
-			i++;
 		}
-		k++;
+		res.k++;
 	}
 	return (split);
 }
 
 int	*ft_splitoi(char const **argv, char c, int capacity)
 {
-	int		k;
-	int		*split;
+	int			*split;
+	t_result	init;
 
-	k = 0;
+	init.error = 0;
+	init.value = 0;
+	init.k = 0;
 	split = malloc(sizeof(int) * capacity);
 	if (!split)
 		return (NULL);
-	split = ft_split_init(k, split, argv, c);
+	split = ft_split_init(init, split, argv, c);
+	if (!split)
+	{
+		free(split);
+		return (NULL);
+	}
 	return (split);
 }

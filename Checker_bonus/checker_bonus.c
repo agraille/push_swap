@@ -6,14 +6,14 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 22:48:06 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/14 01:13:24 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/15 22:59:49 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 #include <stdio.h>
 
-static int	check_line_bis(char *line, t_stack *a, t_stack *b)
+static int	check_line_bis(char *line)
 {
 	write(2, "Error\n", 6);
 	free(line);
@@ -44,8 +44,8 @@ static int	check_line(char *line, t_stack *a, t_stack *b)
 		ra_rb(b);
 	else if (ft_strncmp(line, "rr", 2) == 0)
 		rr(a, b);
-	else if (!check_line_bis(line, a, b))
-		return (0);
+	else if (line)
+		return (check_line_bis(line), 0);
 	return (1);
 }
 

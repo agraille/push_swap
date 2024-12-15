@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:05:59 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/13 22:26:20 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/15 22:35:26 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ typedef struct s_stack
 	int	a_min;
 	int	a_max;
 }	t_stack;
+
+typedef struct s_result
+{
+	int	value;
+	int	error;
+	int	k;
+}	t_result;
 
 t_stack		*ft_init_stack(int capacity);
 void		sa_sb(t_stack *cur, char a);

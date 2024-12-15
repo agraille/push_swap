@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 22:15:07 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/14 01:01:26 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/15 22:46:06 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int	main(int argc, char const **argv)
 		return (free(a), -1);
 	temp = ft_splitoi(argv + 1, ' ', capacity);
 	if (!temp)
-		return (-1);
+		return (free(a), free(b), -1);
 	while (capacity--)
 		a->data[++a->top] = temp[capacity];
 	check_double(a, b, temp);

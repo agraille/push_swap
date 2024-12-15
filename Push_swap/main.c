@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/13 14:39:09 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/15 22:46:26 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,26 +98,26 @@ static int	init_capacity(const char **argv, int argc)
 
 int	main(int argc, char const **argv)
 {
-	t_stack	*pile_a;
-	t_stack	*pile_b;
+	t_stack	*a;
+	t_stack	*b;
 	int		capacity;
 	int		*temp;
 
 	if (argc == 1)
 		return (-1);
 	capacity = init_capacity(argv, argc);
-	pile_a = ft_init_stack(capacity);
-	if (!pile_a)
+	a = ft_init_stack(capacity);
+	if (!a)
 		return (-1);
-	pile_b = ft_init_stack(capacity);
-	if (!pile_b)
-		return (free(pile_a), -1);
+	b = ft_init_stack(capacity);
+	if (!b)
+		return (free(a), -1);
 	temp = ft_splitoi(argv + 1, ' ', capacity);
 	if (!temp)
-		return (-1);
+		return (free(a), free(b), -1);
 	while (capacity--)
-		pile_a->data[++pile_a->top] = temp[capacity];
-	push_swap(pile_a, pile_b, temp);
-	ft_free(pile_a, pile_b, temp);
+		a->data[++a->top] = temp[capacity];
+	push_swap(a, b, temp);
+	ft_free(a, b, temp);
 	return (0);
 }
