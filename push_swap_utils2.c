@@ -6,11 +6,11 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 18:42:09 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/13 14:39:18 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/16 08:53:42 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/push_swap.h"
+#include "push_swap.h"
 
 void	ra_rb(t_stack *cur, char c)
 {

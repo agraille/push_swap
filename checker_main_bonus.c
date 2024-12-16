@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker_main_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/15 22:46:26 by agraille         ###   ########.fr       */
+/*   Created: 2024/12/13 22:15:07 by agraille          #+#    #+#             */
+/*   Updated: 2024/12/16 07:43:07 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/push_swap.h"
+#include "checker_bonus.h"
 
 static int	ft_is_int(const char *str)
 {
@@ -117,7 +117,8 @@ int	main(int argc, char const **argv)
 		return (free(a), free(b), -1);
 	while (capacity--)
 		a->data[++a->top] = temp[capacity];
-	push_swap(a, b, temp);
+	check_double(a, b, temp);
+	run_gnl(a, b);
 	ft_free(a, b, temp);
 	return (0);
 }

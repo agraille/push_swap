@@ -6,11 +6,11 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 20:49:15 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/15 22:42:17 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/16 07:43:26 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/push_swap.h"
+#include "push_swap.h"
 
 static int	ft_atoi( char *nptr)
 {

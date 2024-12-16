@@ -6,12 +6,11 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 22:48:06 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/15 22:59:49 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/16 09:38:23 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
-#include <stdio.h>
 
 static int	check_line_bis(char *line)
 {
@@ -34,7 +33,7 @@ static int	check_line(char *line, t_stack *a, t_stack *b)
 		sa_sb(b);
 	else if (ft_strncmp(line, "ss", 2) == 0)
 		ss(a, b);
-	if (ft_strncmp(line, "pa", 2) == 0)
+	else if (ft_strncmp(line, "pa", 2) == 0)
 		pa(a, b);
 	else if (ft_strncmp(line, "pb", 2) == 0)
 		pb(a, b);
@@ -44,7 +43,7 @@ static int	check_line(char *line, t_stack *a, t_stack *b)
 		ra_rb(b);
 	else if (ft_strncmp(line, "rr", 2) == 0)
 		rr(a, b);
-	else if (line)
+	else
 		return (check_line_bis(line), 0);
 	return (1);
 }
@@ -54,12 +53,18 @@ void	run_gnl(t_stack *a, t_stack *b)
 	char	*line;
 
 	if (is_sorted(a))
+	{	
+		write(1, "OK\n", 3);
 		return ;
+	}
 	line = get_next_line(STDIN_FILENO);
 	while (line != NULL)
 	{
 		if (!check_line(line, a, b))
+		{
+			get_next_line(0);
 			return ;
+		}
 		free(line);
 		line = get_next_line(STDIN_FILENO);
 	}
