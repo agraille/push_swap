@@ -29,6 +29,8 @@ static int	ft_is_int(const char *str)
 		return (0);
 	while (*str >= '0' && *str <= '9')
 	{
+		if (*(str + 1) < '0' || *(str) > '9')
+			return (0);
 		num = num * 10 + (*str - '0');
 		if ((s == 1 && num > INT_MAX) || (s == -1 && num > (long)INT_MAX + 1))
 			return (0);
