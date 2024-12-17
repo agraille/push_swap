@@ -6,7 +6,7 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:25:32 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/16 07:43:39 by agraille         ###   ########.fr       */
+/*   Updated: 2024/12/17 20:57:37 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_is_int(const char *str)
 		return (0);
 	while (*str >= '0' && *str <= '9')
 	{
-		if (*(str + 1) < '0' || *(str) > '9')
+		if ((*(str + 1) < '0' || *(str + 1) > '9') && *(str + 1) != '\0')
 			return (0);
 		num = num * 10 + (*str - '0');
 		if ((s == 1 && num > INT_MAX) || (s == -1 && num > (long)INT_MAX + 1))
