@@ -49,7 +49,10 @@ git clone https://github.com/agraille/push_swap.git
 cd push_swap
 make
 ```
-
+Pour le checker bonus, compilez avec la commande suivante :
+```bash
+make bonus
+```
 ### Exécution :
 
 Exécutez le programme avec une liste d'entiers en argument :
@@ -60,12 +63,19 @@ Exécutez le programme avec une liste d'entiers en argument :
 
 Pour une liste 3 2 1 :
 ```bash
-pb
-pb
+ra
 sa
-pa
-pa
 ```
+Pour vérifier que la liste est correctement triée, utilisez le checker bonus :
+```bash
+ARG="Liste de nombres"; ./push_swap $ARG | ./checker $ARG
+```
+
+Si la liste est triée, la sortie affichera : OK
+
+Sinon, la sortie affichera : KO
+
+Ou Error si la liste est invalide(doublon, > int max,...)
 
 ## 📏 Contraintes
 
@@ -80,9 +90,11 @@ pa
 - Validation et gestion robuste des erreurs.
 
 - Supporte des listes d’entiers de grande taille.
+- 
+- Bonus : Un checker qui vérifie que la liste est bien triée.
 
 ## 💻 Contribuer
-Les contributions sont les bienvenues ! Si vous souhaitez améliorer le jeu, ajouter de nouvelles fonctionnalités ou corriger des bugs, n’hésitez pas à faire un fork du projet et proposer une pull request.
+Les contributions sont les bienvenues ! Si vous souhaitez améliorer cette algo, ajouter de nouvelles fonctionnalités ou corriger des bugs, n’hésitez pas à faire un fork du projet et proposer une pull request.
 
 Comment contribuer :
 - 1 - Forkez le projet.
