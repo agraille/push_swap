@@ -90,7 +90,7 @@ Ou Error si la liste est invalide(doublon, > int max,...)
 - Validation et gestion robuste des erreurs.
 
 - Supporte des listes d’entiers de grande taille.
-- 
+
 - Bonus : Un checker qui vérifie que la liste est bien triée.
 
 ## 💻 Contribuer
