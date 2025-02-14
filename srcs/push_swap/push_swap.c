@@ -6,11 +6,11 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 08:19:54 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/16 07:43:53 by agraille         ###   ########.fr       */
+/*   Updated: 2025/02/14 08:03:59 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 static int	cal_cost_a(t_stack *a, int i)
 {

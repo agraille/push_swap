@@ -6,11 +6,11 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 22:48:06 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/16 09:38:23 by agraille         ###   ########.fr       */
+/*   Updated: 2025/02/14 08:03:07 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_bonus.h"
+#include "../../includes/checker_bonus.h"
 
 static int	check_line_bis(char *line)
 {

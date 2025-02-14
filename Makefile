@@ -6,34 +6,35 @@
 #    By: agraille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 15:02:53 by agraille          #+#    #+#              #
-#    Updated: 2024/12/16 09:11:16 by agraille         ###   ########.fr        #
+#    Updated: 2025/02/14 08:20:35 by agraille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+.PHONY : all bonus re fclean clean .bonus
+
+NAME = push_swap
+BONUS_NAME=checker
 CC=cc
 CFLAGS=-Wall -Wextra -Werror -g3
-SRC = main.c\
-      push_swap.c\
-      push_swap2.c\
-      push_swap3.c\
-      push_swap_utils.c\
-      push_swap_utils2.c\
-      ft_split_int.c
-	  
-BONUS_SRC = checker_bonus.c \
-            checker_main_bonus.c \
-            checker_utils_bonus.c \
-            checker_utils2_bonus.c \
-            checker_utils3_bonus.c \
-            checker_utils4_bonus.c \
-            gnl_bonus.c \
-            gnl_utils_bonus.c
-			
-OBJ = $(SRC:.c=.o)
-BONUS_OBJ = $(BONUS_SRC:.c=.o)
-NAME = push_swap
-BONUS_NAME = checker
-DEPS = $(SRC:.c=.d) $(BONUS_SRC:.c=.d)
+SRC = srcs/main.c\
+      srcs/push_swap/push_swap.c\
+      srcs/push_swap/push_swap2.c\
+      srcs/push_swap/push_swap3.c\
+      srcs/push_swap/push_swap_utils.c\
+      srcs/push_swap/push_swap_utils2.c\
+      srcs/utils/ft_split_int.c
+BONUS_SRC = srcs/bonus/checker_bonus.c \
+            srcs/bonus/checker_main_bonus.c \
+            srcs/bonus/checker_utils_bonus.c \
+            srcs/bonus/checker_utils2_bonus.c \
+            srcs/bonus/checker_utils3_bonus.c \
+            srcs/bonus/checker_utils4_bonus.c \
+            srcs/utils/gnl_bonus.c \
+            srcs/utils/gnl_utils_bonus.c
+
+OBJ_DIR = obj
+OBJ	= $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
+BONUS_OBJ = $(addprefix $(OBJ_DIR)/,$(BONUS_SRC:%.c=%.o))
 GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
@@ -54,24 +55,21 @@ $(BONUS_NAME): $(BONUS_OBJ)
 	@echo "$(GREEN)║   Compilation Bonus Succes! ✅  ║$(RESET)"
 	@echo "$(GREEN)╚═════════════════════════════════╝$(RESET)"
 
-%.o: %.c
-	$(CC) $(CFLAGS) -MMD -c $< -o $@
+$(OBJ_DIR)/%.o: %.c Makefile ./includes/push_swap.h ./includes/checker_bonus.h
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -I . -c $< -o $@
 
--include $(DEPS)
 
 clean :
-	rm -f $(OBJ) $(BONUS_OBJ) $(DEPS)
+	@rm -rf $(OBJ) $(BONUS_OBJ) $(OBJ_DIR)/
 	@echo "$(GREEN)╔═══════════════════════════╗$(RESET)"
 	@echo "$(GREEN)║        Clean OK! 🧽       ║$(RESET)"
 	@echo "$(GREEN)╚═══════════════════════════╝$(RESET)"
 
 fclean :
-	rm -f $(OBJ) $(NAME) $(BONUS_NAME) $(BONUS_OBJ) $(DEPS)
+	@rm -rf $(NAME) $(OBJ) $(OBJ_DIR) $(BONUS_NAME) $(BONUS_OBJ)
 	@echo "$(GREEN)╔═══════════════════════════╗$(RESET)"
 	@echo "$(GREEN)║        Fclean OK! 🪣       ║$(RESET)"
 	@echo "$(GREEN)╚═══════════════════════════╝$(RESET)"
 
-
 re : fclean all
-
-.PHONY : all bonus re fclean clean .bonus

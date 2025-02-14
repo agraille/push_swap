@@ -6,11 +6,11 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 22:15:07 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/17 20:58:08 by agraille         ###   ########.fr       */
+/*   Updated: 2025/02/14 08:03:13 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_bonus.h"
+#include "../../includes/checker_bonus.h"
 
 static int	ft_is_int(const char *str)
 {

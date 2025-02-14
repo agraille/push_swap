@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_utils_bonus.c                              :+:      :+:    :+:   */
+/*   ft_split_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/13 22:15:09 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/16 07:43:10 by agraille         ###   ########.fr       */
+/*   Created: 2024/12/08 20:49:15 by agraille          #+#    #+#             */
+/*   Updated: 2025/02/14 08:03:44 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_bonus.h"
+#include "../../includes/push_swap.h"
 
 static int	ft_atoi( char *nptr)
 {
@@ -33,7 +33,7 @@ static int	ft_atoi( char *nptr)
 	return (result * sign);
 }
 
-static int	ft_copy2(int start, const char *s, char c)
+static int	ft_copy(int start, const char *s, char c)
 {
 	char		*tmp;
 	int			i;
@@ -74,7 +74,7 @@ static int	*ft_split_init(t_result res, int *split, char const **argv, char c)
 			if (word == 1 && argv[res.k][i] != c)
 			{
 				word = 0;
-				split[j++] = ft_copy2(i, argv[res.k], c);
+				split[j++] = ft_copy(i, argv[res.k], c);
 				if (res.error)
 					return (NULL);
 			}

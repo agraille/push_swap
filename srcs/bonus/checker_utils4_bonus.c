@@ -6,11 +6,11 @@
 /*   By: agraille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 22:36:47 by agraille          #+#    #+#             */
-/*   Updated: 2024/12/16 07:43:22 by agraille         ###   ########.fr       */
+/*   Updated: 2025/02/14 08:03:25 by agraille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_bonus.h"
+#include "../../includes/checker_bonus.h"
 
 int	is_sorted(t_stack *a)
 {
